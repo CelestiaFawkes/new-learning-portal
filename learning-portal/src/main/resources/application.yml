@@ -1,0 +1,29 @@
+server:
+  port: ${SERVER_PORT}
+
+logging:
+  level:
+    org:
+      springframework: debug
+
+spring:
+  datasource:
+    dbcp2:
+      driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/${DB_NAME}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: server
